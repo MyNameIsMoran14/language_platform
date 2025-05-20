@@ -5,7 +5,7 @@
 }
 :root {
 	--index: calc(1vw + 1vh);
-	--swiper-theme-color: #4b4d53;
+	--swiper-theme-color: #ffffff56;
 	--swiper-navigation-size: 30px;
 	--swiper-navigation-sides-offset: 50px;
 	--swiper-pagination-bottom: 20px;
@@ -153,4 +153,183 @@ button {
 }
 .main-mnu a:hover {
 	text-decoration: underline;
+}
+
+.cabinet {
+	display: inline-block;
+	padding: 4px 15px; /* уменьшили отступы */
+	border: 2px solid #fff;
+	border-radius: 40px;
+	color: #fff;
+	text-decoration: none !important;
+	font-size: 19px;
+	font-weight: bold;
+	top: -17px;
+	transition: all 0.3s ease;
+	background: transparent;
+	position: relative;
+}
+
+.cabinet:hover {
+	background-image: url('html/img/Kazuha wallpaper.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover; /* или contain, по желанию */
+	color: #fff;
+	border-color: #fff;
+	text-decoration: none;
+	cursor: pointer;
+	transform: scale(1.03);
+}
+
+/*about us*/
+.about-us {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #0d0d0d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  overflow: hidden;
+}
+
+.about-content {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1400px;
+  min-height: 100vh;
+}
+
+.about-image {
+  flex: 1 1 50%;
+  min-height: 100vh;
+  border-top-right-radius: 60px;
+  border-bottom-right-radius: 60px;
+  overflow: hidden;
+  box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-image img {
+  width: 110%; /* Немного больше, чтобы точно покрыть края */
+  height: 110%;
+  object-fit: cover;
+  object-position: center;
+  border-top-right-radius: 60px;
+  border-bottom-right-radius: 60px;
+  transition: transform 0.5s ease;
+}
+
+.about-text {
+  flex: 1 1 50%;
+  padding: 60px 50px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(145deg, #1a1a1a, #111);
+  border-top-left-radius: 60px;
+  border-bottom-left-radius: 60px;
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.about-text h2 {
+  font-size: 36px;
+  color: #BC002D;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.about-text p {
+  font-size: 17px;
+  color: #ddd;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.about-text ul {
+  margin: 20px 0;
+  padding-left: 20px;
+}
+
+.about-text ul li {
+  font-size: 16px;
+  color: #eee;
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 10px;
+}
+/*языки йоу*/
+
+.languages {
+	padding: 60px 20px;
+	background-color: #0d0d0d;
+	color: #fff;
+	text-align: center;
+}
+
+.languages-title {
+	font-size: 32px;
+	margin-bottom: 40px;
+	text-transform: uppercase;
+	letter-spacing: 1.5px;
+}
+
+.languages-list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 30px;
+}
+
+.language-item {
+	background-color: #1c1c1c;
+	border: 1px solid #333;
+	border-radius: 20px;
+	padding: 30px 20px;
+	width: 280px;
+	transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.language-item h3 {
+	font-size: 24px;
+	margin-bottom: 10px;
+	color: #BC002D;
+}
+
+.language-item p {
+	font-size: 15px;
+	line-height: 1.5;
+	color: #ccc;
+}
+
+.language-item:hover {
+	transform: scale(1.05);
+	background-color: #2a2a2a;
+}
+
+.language-item.locked {
+	position: relative;
+	opacity: 0.5;
+	pointer-events: none;
+	filter: grayscale(100%);
+}
+
+.language-item.locked h3,
+.language-item.locked p {
+	color: #777;
+}
+
+.locked-icon {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 40px;
+	height: 40px;
+	opacity: 0.8;
 }
