@@ -183,6 +183,11 @@ button {
 }
 
 /*about us*/
+
+html {
+  scroll-behavior: smooth;
+}
+
 .about-us {
   width: 100%;
   min-height: 100vh;
