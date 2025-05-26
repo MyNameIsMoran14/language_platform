@@ -65,3 +65,29 @@ video.addEventListener('ended', () => {
 		video.play()
 	}
 })
+
+/*переход на о нас*/
+function scrollToAbout() {
+    document.getElementById('about').scrollIntoView({
+      behavior: 'smooth'
+	});
+}
+
+/*знаешь что такое безумие? при каждом заходе на секцию - анимка снова (каюсь,вернула до одного воспроизведения)*/
+const image = document.querySelector('.about-image img');
+let animationPlayed = false;
+
+const observer = new IntersectionObserver(
+  (entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !animationPlayed) {
+        image.style.animation = 'fadeInImage 1.4s ease-out forwards';
+        animationPlayed = true;
+        observer.unobserve(image); // больше не наблюдаем, чтобы анимация не запускалась повторно
+      }
+    });
+  },
+  { threshold: 0.5 }
+);
+
+observer.observe(image);
