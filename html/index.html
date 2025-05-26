@@ -13,6 +13,10 @@
 	<link rel="stylesheet" href="css/main.css">
 	<script src="js/app.js" defer></script>
 
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
 </head>
 <body>
 
@@ -25,9 +29,8 @@
 			</div>
 			<div>
 				<ul class="main-mnu">
-					<li><a href="#">О нас</a></li>
-					<li><a href="#">Услуги</a></li>
-					<li><a href="#">Стоимость</a></li>
+					<li><a href="#about">О нас</a></li>
+					<li><a href="#">Обучение</a></li>
 					<li><a href="#">Команда</a></li>
 					<li><a href="#">Контакты</a></li>
 					<li><a href="#" class="cabinet">Личный кабинет</a></li>
@@ -116,30 +119,45 @@
 		<h2 class="languages-title">Языки, которые мы преподаём</h2>
 		<div class="languages-list">
 			<!-- Доступные языки -->
-			<div class="language-item">
+			<div class="language-item sound-overlay" >
+				<div class="language-overlay">
+					<img src="img/arrow.png" alt="arrow" />
+				</div>
 				<h3>Китайский</h3>
 				<p>Погрузитесь в мир Поднебесной — от базовых иероглифов до уверенного общения.</p>
 			</div>
-			<div class="language-item">
+
+			<div class="language-item sound-overlay" >
+				<div class="language-overlay">
+					<img src="img/arrow.png" alt="arrow" />
+				</div>
 				<h3>Японский</h3>
 				<p>Освойте хирагану, катакану и кандзи с опытными преподавателями и живыми примерами.</p>
 			</div>
-			<div class="language-item">
+
+			<div class="language-item sound-overlay" >
+				<div class="language-overlay">
+					<img src="img/arrow.png" alt="arrow" />
+				</div>
 				<h3>Корейский</h3>
 				<p>Изучайте хангыль и современную речь, включая культуру, музыку и кино.</p>
 			</div>
 
 			<!-- Недоступные языки -->
 			 <div class="language-item locked">
-				<img src="img/free-icon-three-o-clock-clock-13435.png" alt="Скоро" class="locked-icon" />
+				<img src="img/free_icon_three_o_clock_clock_13435.png" alt="Скоро" class="locked-icon" />
 				<h3>Тайский</h3>
 				<p>Курс в разработке. Совсем скоро вы сможете начать изучение!</p>
 			</div>
 			<div class="language-item locked">
-				<img src="img/free-icon-three-o-clock-clock-13435.png" alt="Скоро" class="locked-icon" />
+				<img src="img/free_icon_three_o_clock_clock_13435.png" alt="Скоро" class="locked-icon" />
 				<h3>Вьетнамский</h3>
 				<p>Курс в разработке. Следите за новостями!</p>
 			</div>
+
+			<!--плейсхолдер ибо мы бомжи без идей на 6 язык-->
+			<div class="language-item placeholder"></div> 
+			
 			
 		</div>
 	</div>
