@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-
+    <link rel="stylesheet" href="../css/main.css">
 	<script src="../js/tests.js" defer></script>
 </head>
 <body>
-    <canvas id="draw-area" width="280" height="280" style="border:1px solid #000"></canvas>
-    <button onclick="submitDrawing()">Распознать</button>
-
+    <section class="canvas-section">
+        <div class="canvas-container">
+            <canvas id="draw-area" width="280" height="280"></canvas>
+             <button class="draw-button" onclick="submitDrawing()">Распознать</button>
+        </div>
+    </section>
 </body>
 </html>
