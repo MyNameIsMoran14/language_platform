@@ -24,3 +24,6 @@ function submitDrawing() {
   .then(res => res.json())
   .then(data => alert("Распознанный иероглиф: " + data.character));
 }
+
+
+//db scan
