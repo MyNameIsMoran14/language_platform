@@ -159,10 +159,6 @@ button {
 	font-weight: 200;
 	transition: color 0.3s ease, opacity 0.3s ease;
 }
-.main-mnu a:hover {
-	text-decoration: underline;
-}
-
 .main-mnu:hover a {
 	opacity: 0.3;
 }
