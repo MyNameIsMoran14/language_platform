@@ -13,10 +13,10 @@ const swiperText = new Swiper('.swiper', {
 
 // Пути к видео для каждого слайда
 const videoSources = [
-	'../media/japan.mp4',
-	'../media/china.mp4',
-	'../media/korea.mp4',
-	'../media/thailand.mp4'
+	'/static/media/japan.mp4',
+	'/static/media/china.mp4',
+	'/static/media/korea.mp4',
+	'/static/media/thailand.mp4'
 ]
 
 const video = document.querySelector('.video-background')

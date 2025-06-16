@@ -1,10 +1,10 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "Привет, это мой первый Flask-проект!"
+    return render_template("pages/index.html")
 
 if __name__ == "__main__":
-    app.run(debug=True)  # Запуск сервера в режиме отладки
+    app.run(debug=True)

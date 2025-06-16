@@ -5,14 +5,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>PIN</title>
 
-	<script src="../libs/gsap/gsap.min.js" defer></script>
+	<script src="{{ url_for('static',filename='libs/gsap/gsap.min.js')}}" defer></script>
 
-	<script src="../libs/swiper/swiper-bundle.min.js" defer></script>
-	<link rel="stylesheet" href="../libs/swiper/swiper-bundle.min.css">
+	<script src="{{ url_for('static',filename='libs/swiper/swiper-bundle.min.js')}}" defer></script>
+	<link rel="stylesheet" href="{{ url_for('static',filename='libs/swiper/swiper-bundle.min.css')}}">
 
-	<link rel="stylesheet" href="../css/main.css">
-	<script src="../js/app.js" defer></script>
-	<script src="../js/modal.js" defer></script>
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/main.css')}}">
+	<script src="{{ url_for('static',filename='js/app.js')}}" defer></script>
+	<script src="{{ url_for('static',filename='js/modal.js')}}" defer></script>
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,12 +20,12 @@
 
 </head>
 <body>
-
+	
 	<div class="top-line">
 		<div class="container container-top">
 			<div>
 				<div class="logo">
-					<img src="../img/logo.png" alt="Alt">
+					<img src="{{ url_for('static',filename='img/logo.png')}}" alt="Alt">
 				</div>
 			</div>
 			<div>
@@ -85,13 +85,13 @@
 	</div>
 
 	<!-- Видео, которое будет переключаться -->
-	<video src="../media/japan.mp4" class="video-background" muted autoplay loop playsinline></video>
+	<video src="{{ url_for('static',filename='media/japan.mp4')}}" class="video-background" muted autoplay loop playsinline></video>
 
 
 	<section class="about-us" id="about">
 		<div class="about-content">
 			<div class="about-image">
-			<img src="../img/asia-about-us.jpg" alt="Изучение языков">
+			<img src="{{ url_for('static',filename='img/asia-about-us.jpg')}}" alt="Изучение языков">
 			</div>
 			<div class="about-text">
 				<h2>О нас</h2>
@@ -122,7 +122,7 @@
 				<!-- Доступные языки -->
 				<div class="language-item sound-overlay" >
 					<div class="language-overlay">
-						<img src="../img/arrow.png" alt="arrow" />
+						<img src="{{ url_for('static',filename='img/arrow.png')}}" alt="arrow" />
 					</div>
 					<h3>Китайский</h3>
 					<p>Погрузитесь в мир Поднебесной — от базовых иероглифов до уверенного общения.</p>
@@ -130,7 +130,7 @@
 
 				<div class="language-item sound-overlay" >
 					<div class="language-overlay">
-						<img src="../img/arrow.png" alt="arrow" />
+						<img src="{{ url_for('static',filename='img/arrow.png')}}" alt="arrow" />
 					</div>
 					<h3>Японский</h3>
 					<p>Освойте хирагану, катакану и кандзи с опытными преподавателями и живыми примерами.</p>
@@ -138,7 +138,7 @@
 
 				<div class="language-item sound-overlay" >
 					<div class="language-overlay">
-						<img src="../img/arrow.png" alt="arrow" />
+						<img src="{{ url_for('static',filename='img/arrow.png')}}" alt="arrow" />
 					</div>
 					<h3>Корейский</h3>
 					<p>Изучайте хангыль и современную речь, включая культуру, музыку и кино.</p>
@@ -146,12 +146,12 @@
 
 				<!-- Недоступные языки -->
 				<div class="language-item locked">
-					<img src="../img/free_icon_three_o_clock_clock_13435.png" alt="Скоро" class="locked-icon" />
+					<img src="{{ url_for('static',filename='img/free_icon_three_o_clock_clock_13435.png')}}" alt="Скоро" class="locked-icon" />
 					<h3>Тайский</h3>
 					<p>Курс в разработке. Совсем скоро вы сможете начать изучение!</p>
 				</div>
 				<div class="language-item locked">
-					<img src="../img/free_icon_three_o_clock_clock_13435.png" alt="Скоро" class="locked-icon" />
+					<img src="{{ url_for('static',filename='img/free_icon_three_o_clock_clock_13435.png')}}" alt="Скоро" class="locked-icon" />
 					<h3>Вьетнамский</h3>
 					<p>Курс в разработке. Следите за новостями!</p>
 				</div>
