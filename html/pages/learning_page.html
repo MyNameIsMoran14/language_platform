@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIN</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+
+	<script src="../js/modal.js" defer></script>
+	
+</head>
+<body>
+    <div class="top-line">
+		<div class="container container-top">
+			<div>
+				<div class="logo">
+					<img src="../img/logo.png" alt="Alt">
+				</div>
+			</div>
+			<div>
+				<ul class="main-mnu">
+					<li><a href="index.html#about">О нас</a></li>
+					<li><a href="learning_page.html">Обучение</a></li>
+					<li><a href="#">Команда</a></li>
+					<li><a href="#">Контакты</a></li>
+					<li><a href="#" class="cabinet" onclick="openModal()">Войти в личный кабинет</a></li>
+					
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="modal-overlay" id="login-modal">
+		<div class="modal-content">
+			<span class="close-modal" onclick="closeModal()">&times;</span>
+			<h2>Вход в личный кабинет</h2>
+			<form>
+				<input type="text" placeholder="Логин" required>
+
+				<div class="password-field">
+					<input type="password" id="password" placeholder="Пароль" required>
+					<span class="toggle-password" onclick="togglePassword()">👁</span>
+				</div>
+
+				<button type="submit">Войти</button>
+				<button type="button" class="register-btn" onclick="handleRegister()">Регистрация</button>
+			</form>
+		</div>
+	</div>
+
+
+    <div class="video-background">
+        <video autoplay muted loop playsinline class="bg-video">
+            <source src="../media/spirited_away_bg_2.mp4" type="video/mp4" />
+            Ваш браузер не поддерживает видео фон.
+        </video>
+    <div class="overlay"></div>
+    <div class="content">
+        <h1>Твой текст здесь</h1>
+        <p>Можно добавить описание или кнопку</p>
+    </div>
+
+	
+    
+</body>
+</html>
