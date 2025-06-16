@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>PIN-East</title>
+	<title>PIN</title>
 
 	<script src="../libs/gsap/gsap.min.js" defer></script>
 
@@ -12,6 +12,7 @@
 
 	<link rel="stylesheet" href="../css/main.css">
 	<script src="../js/app.js" defer></script>
+	<script src="../js/modal.js" defer></script>
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,7 +34,7 @@
 					<li><a href="learning_page.html">Обучение</a></li>
 					<li><a href="#">Команда</a></li>
 					<li><a href="#">Контакты</a></li>
-					<li><a href="#" class="cabinet">Войти в личный кабинет</a></li>
+					<li><a href="#" class="cabinet" onclick="openModal()">Войти в личный кабинет</a></li>
 					
 				</ul>
 			</div>
@@ -203,6 +204,23 @@
 		</div>
 	</footer>
 
+	<div class="modal-overlay" id="login-modal">
+		<div class="modal-content">
+			<span class="close-modal" onclick="closeModal()">&times;</span>
+			<h2>Вход в личный кабинет</h2>
+			<form>
+				<input type="text" placeholder="Логин" required>
+
+				<div class="password-field">
+					<input type="password" id="password" placeholder="Пароль" required>
+					<span class="toggle-password" onclick="togglePassword()">👁</span>
+				</div>
+
+				<button type="submit">Войти</button>
+				<button type="button" class="register-btn" onclick="handleRegister()">Регистрация</button>
+			</form>
+		</div>
+	</div>
 
 </body>
 </html>
