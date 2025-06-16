@@ -91,3 +91,4 @@ const observer = new IntersectionObserver(
 );
 
 observer.observe(image);
+

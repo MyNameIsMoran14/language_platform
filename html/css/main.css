@@ -25,6 +25,7 @@ body {
 
 html,body{
   overflow-x: hidden;
+  overflow-y: scroll;
 }
 .slider {
 	height: 100vh;
@@ -129,8 +130,7 @@ button {
 	padding: 1.7rem 0;
 }
 .logo {
-	border: 3px solid #E1E6F7;
-	border-radius: 10em;
+
 	width: 54px;
 	height: 54px;
 	display: flex;
@@ -139,7 +139,7 @@ button {
 	opacity: .75;
 }
 .logo img{
-	width: 25px;
+	width: 60px;
 	height: auto;
 }
 .main-mnu {
@@ -211,6 +211,8 @@ button {
 }
 
 .modal-content {
+
+  z-index: 1001;
   background: #1a1a1a;
   color: white;
   padding: 30px;
@@ -325,8 +327,6 @@ button {
   border-color: #fff;
 }
 
-
-
 .close-modal {
   position: absolute;
   top: 10px; right: 15px;
@@ -369,6 +369,7 @@ button {
 .toggle-password:hover {
   color: #fff;
 }
+
 
 /*about us*/
 
@@ -689,7 +690,8 @@ html {
   min-height: 100%;
   transform: translate(-50%, -50%);
   object-fit: cover;
-  z-index: 0;
+  z-index: -1;
+  background-color: black; /* на всякий случай */
 }
 
 .overlay {
