@@ -25,13 +25,15 @@
 		<div class="container container-top">
 			<div>
 				<div class="logo">
-					<img src="{{ url_for('static',filename='img/logo.png')}}" alt="Alt">
+  					<a href="{{ url_for('home') }}">
+    					<img src="{{ url_for('static', filename='img/logo.png') }}" alt="Alt">
+  					</a>
 				</div>
 			</div>
 			<div>
 				<ul class="main-mnu">
-					<li><a href="index.html#about">О нас</a></li>
-					<li><a href="learning_page.html">Обучение</a></li>
+					<li><a href="{{ url_for('home') }}#about">О нас</a></li>
+					 <li><a href="{{ url_for('learning') }}">Обучение</a></li>
 					<li><a href="#">Команда</a></li>
 					<li><a href="#">Контакты</a></li>
 					<li><a href="#" class="cabinet" onclick="openModal()">Войти в личный кабинет</a></li>
