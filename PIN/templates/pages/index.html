@@ -211,7 +211,7 @@
 		<div class="modal-content">
 			<span class="close-modal" onclick="closeModal()">&times;</span>
 			<h2>Вход в личный кабинет</h2>
-			<form>
+			<form method="POST" action="{{ url_for('login') }}">
 				<input type="text" placeholder="Логин" required>
 
 				<div class="password-field">
