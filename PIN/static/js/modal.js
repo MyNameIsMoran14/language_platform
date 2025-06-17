@@ -1,14 +1,14 @@
-const modal = document.getElementById("login-modal");
-const loginButton = document.querySelector(".cabinet");
+document.addEventListener("DOMContentLoaded", () => {
+  const modal = document.getElementById("login-modal");
+  const loginButton = document.querySelector(".cabinet");
+  const modalContent = modal.querySelector(".modal-content");
 
-loginButton.addEventListener("click",function(e){
+
+  loginButton?.addEventListener("click", function (e) {
     e.preventDefault();
-    modal.style.display = "flex";
-});
+    openModal();
+  });
 
- function closeModal() {
-    modal.style.display = "none";
-  }
 
   window.addEventListener("click", function (e) {
     if (e.target === modal) {
@@ -16,38 +16,36 @@ loginButton.addEventListener("click",function(e){
     }
   });
 
-function togglePassword() {
-    const passwordInput = document.getElementById('password');
-    const toggleIcon = document.querySelector('.toggle-password');
-    const isHidden = passwordInput.type === 'password';
 
-    passwordInput.type = isHidden ? 'text' : 'password';
-    toggleIcon.textContent = isHidden ? '👁' : '👁';
-}
+  window.togglePassword = function () {
+    const passwordInput = document.getElementById("password");
+    const toggleIcon = document.querySelector(".toggle-password");
+    const isHidden = passwordInput.type === "password";
 
-function openModal() {
-    const modal = document.getElementById("login-modal");
-    modal.classList.remove("fade-out"); // если было закрытие до этого
+    passwordInput.type = isHidden ? "text" : "password";
+    toggleIcon.textContent = isHidden ? "👁" : "👁";
+  };
+
+ 
+  window.openModal = function () {
+    modal.classList.remove("fade-out");
     modal.style.display = "flex";
-}
-
-function closeModal() {
-    const modal = document.getElementById("login-modal");
-    const content = modal.querySelector(".modal-content");
+  };
 
 
+  window.closeModal = function () {
     modal.classList.add("fade-out");
-    content.classList.add("fade-out");
-
+    modalContent.classList.add("fade-out");
 
     setTimeout(() => {
-        modal.style.display = "none";
-        modal.classList.remove("fade-out");
-        content.classList.remove("fade-out");
+      modal.style.display = "none";
+      modal.classList.remove("fade-out");
+      modalContent.classList.remove("fade-out");
     }, 300);
-}
+  };
 
-function handleRegister() {
-  alert("Переход на форму регистрации");
 
-}
+  window.handleRegister = function () {
+    window.location.href = "/register"; 
+  };
+});
