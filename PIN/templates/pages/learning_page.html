@@ -32,11 +32,12 @@
 			</div>
 		</div>
 	</div>
-	<div class="modal-overlay" id="login-modal">
+
+	<div class="modal-overlay" id="login-modal">	
 		<div class="modal-content">
 			<span class="close-modal" onclick="closeModal()">&times;</span>
 			<h2>Вход в личный кабинет</h2>
-			<form>
+			<form method="POST" action="{{ url_for('login') }}">
 				<input type="text" placeholder="Логин" required>
 
 				<div class="password-field">
@@ -50,17 +51,45 @@
 		</div>
 	</div>
 
-
-    <div class="video-background">
+	<div class="tariff-video-bg">
         <video autoplay muted loop playsinline class="bg-video">
             <source src="{{ url_for('static', filename='media/spirited_away_bg_2.mp4') }}" type="video/mp4" />
             Ваш браузер не поддерживает видео фон.
         </video>
-    <div class="overlay"></div>
-    <div class="content">
-        <h1>Твой текст здесь</h1>
-        <p>Можно добавить описание или кнопку</p>
-    </div>
+
+		<div class="tariff-overlay"></div>
+
+		<section class="tariff-section">
+			<div class="tariff-container">
+				<div class="tariff-card">
+					<h3 class="tariff-title">БАЗОВЫЙ</h3>
+					<p class="tariff-price">1000₽</p> 
+					<div class="tariff-divider"></div>
+					<p class="tariff-desc">кукуруза недорого</p>
+					<button class="tariff-button">Выбрать</button>
+				</div>
+
+				<div class="tariff-card">
+					<h3 class="tariff-title">ПРОДВИНУТЫЙ</h3>
+					<p class="tariff-price">2500₽</p>
+					<div class="tariff-divider"></div>
+					<p class="tariff-desc">надувные матрасы средне</p>
+					<button class="tariff-button">Выбрать</button>
+				</div>
+
+				<div class="tariff-card">
+					<h3 class="tariff-title">ПРЕМИУМ</h3>
+					<p class="tariff-price">5000₽</p>
+					<div class="tariff-divider"></div>
+					<p class="tariff-desc">резиновые бабы дорого</p>
+					<button class="tariff-button">Выбрать</button>
+				</div>
+			</div>
+		</section>
+	</div>
+
+    
+		
 
 	
     

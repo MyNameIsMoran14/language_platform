@@ -212,10 +212,10 @@
 			<span class="close-modal" onclick="closeModal()">&times;</span>
 			<h2>Вход в личный кабинет</h2>
 			<form method="POST" action="{{ url_for('login') }}">
-				<input type="text" placeholder="Логин" required>
+				<input type="text" name="username" placeholder="Логин" required>
 
 				<div class="password-field">
-					<input type="password" id="password" placeholder="Пароль" required>
+					<input type="password" id="password"  name="password" placeholder="Пароль" required>
 					<span class="toggle-password" onclick="togglePassword()">👁</span>
 				</div>
 
