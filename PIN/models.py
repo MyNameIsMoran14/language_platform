@@ -10,3 +10,6 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String, nullable=False)
     password = db.Column(db.String, nullable=False)
 
+    def check_password(self, password):
+        return self.password == password
+
