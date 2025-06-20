@@ -88,5 +88,16 @@ def contacts():
 def test():
     return render_template('pages/test_chinese.html')
 
+@app.route("/profile")
+@login_required
+def profile():
+    return render_template("pages/profile.html")  
+
+@app.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for("home"))
+
 if __name__ == "__main__":
     app.run(debug=True)

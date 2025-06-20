@@ -26,7 +26,18 @@
 					 <li><a href="{{ url_for('learning') }}">Обучение</a></li>
 					<li><a href="#">Команда</a></li>
 					<li><a href="#">Контакты</a></li>
-					<li><a href="#" class="cabinet" onclick="openModal()">Войти в личный кабинет</a></li>
+					
+					{% if current_user.is_authenticated %}
+						<li class="user-dropdown">
+							<a href="#" class="cabinet">{{ current_user.login }}</a>
+							<ul class="dropdown-menu">
+								<li><a href="{{ url_for('profile') }}">Личный кабинет</a></li>
+								<li><a href="{{ url_for('logout') }}">Выйти</a></li>
+							</ul>
+						</li>
+					{% else %}
+						<li><a href="#" class="cabinet" onclick="openModal()">Войти в личный кабинет</a></li>
+					{% endif %}
 					
 				</ul>
 			</div>
