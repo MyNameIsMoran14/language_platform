@@ -204,9 +204,20 @@ def contacts():
     return render_template('pages/contacts.html')
 
 
-@app.route('/test')
+@app.route('/test/grammar')
 def test():
-    return render_template('pages/test_chinese.html')
+    return render_template('pages/cards_game.html')
+
+@app.route('/profile')
+def profile():
+    return render_template('pages/profile.html')
+
+@app.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    flash("Вы вышли из аккаунта", "info")
+    return redirect(url_for("home"))
 
 
 if __name__ == "__main__":

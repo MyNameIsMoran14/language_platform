@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>PIN</title>
+
+	<script src="{{ url_for('static',filename='libs/gsap/gsap.min.js')}}" defer></script>
+
+	<script src="{{ url_for('static',filename='libs/swiper/swiper-bundle.min.js')}}" defer></script>
+	<link rel="stylesheet" href="{{ url_for('static',filename='libs/swiper/swiper-bundle.min.css')}}">
+
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/main.css')}}">
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/test.css')}}">
+	<script src="{{ url_for('static',filename='js/app.js')}}" defer></script>
+	<script src="{{ url_for('static',filename='js/modal.js')}}" defer></script>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+	
+	<div class="top-line">
+		<div class="container container-top">
+			<div>
+				<div class="logo">
+  					<a href="{{ url_for('home') }}">
+    					<img src="{{ url_for('static', filename='img/logo.png') }}" alt="Alt">
+  					</a>
+				</div>
+			</div>
+			<div>
+				<ul class="main-mnu">
+					<li><a href="{{ url_for('home') }}#about">О нас</a></li>
+					 <li><a href="{{ url_for('learning') }}">Обучение</a></li>
+					<li><a href="#">Команда</a></li>
+					<li><a href="#">Контакты</a></li>
+					
+					{% if current_user.is_authenticated %}
+						<li class="user-dropdown">
+
+							<a href="#" class="cabinet">
+								<img src="{{ url_for('static', filename='img/user.svg') }}" alt="User"  class="user-icon">
+								{{ current_user.login }}
+							</a>
+							<ul class="dropdown-menu">
+								<li><a href="{{ url_for('profile') }}">Личный кабинет</a></li>
+								<li><a href="{{ url_for('logout') }}">Выйти</a></li>
+							</ul>
+						</li>
+					{% else %}
+						<li><a href="#" class="cabinet" onclick="openModal()">Войти в личный кабинет</a></li>
+					{% endif %}
+					
+				</ul>
+			</div>
+		</div>
+	</div>
+
+    <section class="grammar-game">
+        <p class="sentence">我 ____ 吃饭。</p>
+
+        <div class="cards">
+            <button class="card">是</button>
+            <button class="card">在</button>
+            <button class="card">和</button>
+            <button class="card">去</button>
+        </div>
+
+        <p class="feedback"></p>
+    </section>
+
+	<footer class="site-footer">
+		<div class="footer-container">
+			<div class="footer-main-content">
+			<div class="footer-links">
+				<div class="links-column">
+				<h3>Карта</h3>
+				<ul>
+					<li><a href="#about">О нас</a></li>
+					<li><a href="/learning">Обучение</a></li>
+					<li><a href="/inteam">Команда</a></li>
+					<li><a href="/contacts">Контакты</a></li>
+				</ul>
+				</div>
+				
+				
+				<div class="links-column">
+				<h3>Контакты</h3>
+				<ul>
+					<li><a href="https://t.me/OhhhhReally" target="_blank">@OhhhhReally</a></li>
+					<li><a href="https://t.me/golopat" target="_blank">@golopat</a></li>
+					<li><a href="https://t.me/pinpincod" target="_blank">🔍 pincode</a></li>
+				</ul>
+				</div>
+			</div>
+			
+			<div class="community-block">
+				<div class="community-content">
+				<h3>Вступай в комьюнити 💬</h3>
+				<p>Вся важная информация и ещё много всего!</p>
+				</div>
+			</div>
+			</div>
+			
+			<div class="copyright">
+			<p>Copyright © 2025 – 2025 PINCODE. All Rights Reserved.</p>
+			</div>
+		</div>
+	</footer>
+
+</body>
+</html>

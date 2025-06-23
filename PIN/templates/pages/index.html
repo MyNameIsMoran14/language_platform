@@ -39,7 +39,11 @@
 					
 					{% if current_user.is_authenticated %}
 						<li class="user-dropdown">
-							<a href="#" class="cabinet">{{ current_user.login }}</a>
+
+							<a href="#" class="cabinet">
+								<img src="{{ url_for('static', filename='img/user.svg') }}" alt="User"  class="user-icon">
+								{{ current_user.login }}
+							</a>
 							<ul class="dropdown-menu">
 								<li><a href="{{ url_for('profile') }}">Личный кабинет</a></li>
 								<li><a href="{{ url_for('logout') }}">Выйти</a></li>
