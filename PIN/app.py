@@ -164,17 +164,11 @@ def register():
     if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
-        confirm_password = request.form.get("confirm_password")
-
+        
         # Проверяем, существует ли уже пользователь с таким именем
-        existing_user = User.query.filter_by(username=username).first()
+        existing_user = User.query.filter_by(login=username).first()
         if existing_user:
             flash("Пользователь с таким именем уже существует", "danger")
-            return redirect(url_for("register"))
-
-        # Проверяем совпадение паролей
-        if password != confirm_password:
-            flash("Пароли не совпадают", "danger")
             return redirect(url_for("register"))
 
         # Создаем нового пользователя
