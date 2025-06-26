@@ -70,7 +70,7 @@ class GigaChatService:
             raise Exception(f"Ошибка аутентификации: {str(e)}")
 
     def generate_quest(self):
-        """Генерация тура через GigaChat API"""
+       
         if not self.access_token:
             self.get_access_token()
 
@@ -134,7 +134,6 @@ def btn():
 
 @app.route('/api/generate-quest', methods=['POST'])
 def api_generate_quest():
-    # Генерация тура
     service = GigaChatService()
     result = service.generate_quest()
     print(jsonify(result))

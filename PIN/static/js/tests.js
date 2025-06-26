@@ -1,25 +1,84 @@
 /*тест карточки*/ 
-document.addEventListener("DOMContentLoaded", function () {
-  const correctAnswer = "在";
-  const cards = document.querySelectorAll(".card");
-  const feedback = document.querySelector(".feedback");
 
-  if (cards.length > 0 && feedback) {
-    cards.forEach(card => {
-      card.addEventListener("click", () => {
-        if (card.textContent === correctAnswer) {
+document.addEventListener("DOMContentLoaded", async function () {
+  const sentenceEl = document.querySelector(".sentence");
+  const cardsContainer = document.querySelector(".cards");
+  const feedback = document.querySelector(".feedback");
+  const loadingEl = document.querySelector(".loading-spinner");
+
+  let exercises = [];
+  let currentIndex = 0;
+
+  try {
+    const response = await fetch("/api/generate-quest", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({})
+    });
+
+    if (!response.ok) throw new Error("Сервер вернул ошибку");
+
+    const data = await response.json();
+    exercises = data.exercises;
+
+    loadingEl.style.display = "none";
+    showExercise();
+
+  } catch (error) {
+    console.error("Ошибка при получении задания:", error);
+    feedback.textContent = "Ошибка загрузки задания.";
+    feedback.style.color = "#ff5050";
+  }
+
+  function showExercise() {
+    if (currentIndex >= exercises.length) {
+      sentenceEl.textContent = "Все задания выполнены!";
+      cardsContainer.innerHTML = "";
+      feedback.textContent = "";
+      return;
+    }
+
+    const exercise = exercises[currentIndex];
+
+    sentenceEl.textContent = decodeUnicode(exercise.sentence);
+    cardsContainer.innerHTML = "";
+    feedback.textContent = "";
+
+    exercise.options.forEach(option => {
+      const button = document.createElement("button");
+      button.className = "card";
+      button.textContent = decodeUnicode(option);
+
+      button.addEventListener("click", () => {
+        if (button.textContent === decodeUnicode(exercise.correct_answer)) {
           feedback.textContent = "Верно!";
           feedback.style.color = "#00ff88";
+
+          setTimeout(() => {
+            currentIndex++;
+            showExercise();
+          }, 1500); 
         } else {
           feedback.textContent = "Неправильно. Попробуй ещё.";
           feedback.style.color = "#ff5050";
         }
       });
+
+      cardsContainer.appendChild(button);
     });
+  }
+
+  function decodeUnicode(str) {
+    return str.replace(/\\u[\dA-F]{4}/gi, match =>
+      String.fromCharCode(parseInt(match.replace(/\\u/g, ""), 16))
+    );
   }
 });
 
 
+
+
+/*НЕ НУЖНО*/
 
 // let canvas = document.getElementById('draw-area');
 // let ctx = canvas.getContext('2d');
