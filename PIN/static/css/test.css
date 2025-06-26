@@ -15,9 +15,9 @@
 
 .cards {
   display: flex;
+  gap: 10px;
   justify-content: center;
-  gap: 20px;
-  margin-top: 30px;
+  margin: 20px 0;
 }
 
 .card {
@@ -46,11 +46,35 @@
 }
 
 .feedback {
-	margin-top: 20px;
-	font-size: 18px;
-	color: #BC002D;
+  text-align: center;
+  font-size: 18px;
+  margin-top: 10px;
+  height: 30px;
 }
 
+.video-header {
+  position: relative;
+  width: 100%;
+  height: 550px; /* Высота видео */
+  overflow: hidden;
+  z-index: 0;
+}
+
+.video-header video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.video-header::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* background: rgba(0, 0, 0, 0.4); затемнение поверх видео */
+  z-index: 1;
+  box-shadow: inset 0 80px 60px #000, inset 0 -20px 50px #000;
+}
 
 
 

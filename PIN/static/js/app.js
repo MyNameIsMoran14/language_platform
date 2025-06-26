@@ -93,21 +93,3 @@ const observer = new IntersectionObserver(
 observer.observe(image);
 
 
-/*тест карточки*/ 
-document.addEventListener("DOMContentLoaded", function () {
-	const correctAnswer = "在";
-	const cards = document.querySelectorAll(".card");
-	const feedback = document.querySelector(".feedback");
-
-	cards.forEach(card => {
-		card.addEventListener("click", () => {
-			if (card.textContent === correctAnswer) {
-				feedback.textContent = "Верно!";
-				feedback.style.color = "#00ff88";
-			} else {
-				feedback.textContent = "Неправильно. Попробуй ещё.";
-				feedback.style.color = "#ff5050";
-			}
-		});
-	});
-});

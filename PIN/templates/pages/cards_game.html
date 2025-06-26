@@ -12,8 +12,9 @@
 
 	<link rel="stylesheet" href="{{ url_for('static',filename='css/main.css')}}">
 	<link rel="stylesheet" href="{{ url_for('static',filename='css/test.css')}}">
-	<script src="{{ url_for('static',filename='js/app.js')}}" defer></script>
+	
 	<script src="{{ url_for('static',filename='js/modal.js')}}" defer></script>
+	<script src="{{ url_for('static',filename='js/tests.js')}}" defer></script>
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,6 +60,32 @@
 		</div>
 	</div>
 
+	<div class="modal-overlay" id="login-modal">
+		
+		<div class="modal-content">
+			<span class="close-modal" onclick="closeModal()">&times;</span>
+			<h2>Вход в личный кабинет</h2>
+			<form method="POST" action="{{ url_for('login') }}">
+				<input type="text" name="username" placeholder="Логин" required>
+
+				<div class="password-field">
+					<input type="password" id="password"  name="password" placeholder="Пароль" required>
+					<span class="toggle-password" onclick="togglePassword()">👁</span>
+				</div>
+
+				<button type="submit">Войти</button>
+				<button type="button" class="register-btn" onclick="handleRegister()">Регистрация</button>
+			</form>
+		</div>
+	</div>
+
+	<div class="video-header">
+		<video autoplay muted loop playsinline>
+			<source src="{{ url_for('static', filename='media/geisha bg.mp4') }}" type="video/mp4">
+			Ваш браузер не поддерживает видео.
+		</video>
+	</div>
+
     <section class="grammar-game">
         <p class="sentence">我 ____ 吃饭。</p>
 
@@ -92,7 +119,7 @@
 				<ul>
 					<li><a href="https://t.me/OhhhhReally" target="_blank">@OhhhhReally</a></li>
 					<li><a href="https://t.me/golopat" target="_blank">@golopat</a></li>
-					<li><a href="https://t.me/pinpincod" target="_blank">🔍 pincode</a></li>
+					<li><a href="https://t.me/pinpincod" target="_blank">🔍 pincod</a></li>
 				</ul>
 				</div>
 			</div>
@@ -106,7 +133,7 @@
 			</div>
 			
 			<div class="copyright">
-			<p>Copyright © 2025 – 2025 PINCODE. All Rights Reserved.</p>
+			<p>Copyright © 2025 – 2025 PINCOD. All Rights Reserved.</p>
 			</div>
 		</div>
 	</footer>
