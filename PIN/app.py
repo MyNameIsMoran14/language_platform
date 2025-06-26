@@ -146,12 +146,13 @@ def login():
     username = request.form.get("username")  # Получаем логин из формы
     password = request.form.get("password")  # Получаем пароль из формы
 
-    user = User.query.filter_by(username=username).first()
+    user = User.query.filter_by(login=username).first()
 
-    # Проверяем пользователя и пароль
+# Проверяем пользователя и пароль
     if user and user.check_password(password):
         login_user(user)  # Авторизуем пользователя
         flash("Вы успешно вошли!", "success")
+        print('Успешно вошли!')
         return redirect(url_for("home"))  # Перенаправляем на главную
     else:
         print("Пароль неверен")
@@ -163,24 +164,26 @@ def login():
 def register():
     if request.method == "POST":
         username = request.form.get("username")
+        email = request.form.get("email")
         password = request.form.get("password")
-        
-        # Проверяем, существует ли уже пользователь с таким именем
-        existing_user = User.query.filter_by(login=username).first()
+
+        # Проверяем, существует ли пользователь с таким именем или email
+        existing_user = User.query.filter((User.login == username) | (User.email == email)).first()
         if existing_user:
-            flash("Пользователь с таким именем уже существует", "danger")
+            flash("Пользователь с таким именем или email уже существует", "danger")
             return redirect(url_for("register"))
 
         # Создаем нового пользователя
-        new_user = User(username=username)
-        new_user.set_password(password)  # Хешируем пароль
+        new_user = User(login=username, email=email, password=password)
+
+
         db.session.add(new_user)
         db.session.commit()
 
         flash("Регистрация прошла успешно! Теперь вы можете войти.", "success")
         return redirect(url_for("home"))
 
-    return render_template("pages/register.html")
+    return render_template("pages/reg_form.html")
 
 
 @app.route("/learning")
