@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, request, flash, jsonify
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
-from models import db, User
+from models import db, User, UserRole, SubscriptionPlan
 import requests
 import uuid
 import json
@@ -166,6 +166,8 @@ def register():
         username = request.form.get("username")
         email = request.form.get("email")
         password = request.form.get("password")
+        role = request.form.get("role", UserRole.USER.value)  # По умолчанию обычный пользователь
+        subscription = request.form.get("subscription", SubscriptionPlan.NO_TARIFF.value)  # По умолчанию бесплатный
 
         # Проверяем, существует ли пользователь с таким именем или email
         existing_user = User.query.filter((User.login == username) | (User.email == email)).first()
@@ -174,8 +176,13 @@ def register():
             return redirect(url_for("register"))
 
         # Создаем нового пользователя
-        new_user = User(login=username, email=email, password=password)
-
+        new_user = User(
+            login=username,
+            email=email,
+            password=password,
+            role=role,
+            subscription=subscription
+        )
 
         db.session.add(new_user)
         db.session.commit()
@@ -183,7 +190,10 @@ def register():
         flash("Регистрация прошла успешно! Теперь вы можете войти.", "success")
         return redirect(url_for("home"))
 
-    return render_template("pages/reg_form.html")
+    # Для GET-запроса передаем возможные роли и тарифы в шаблон
+    return render_template("pages/reg_form.html",
+                         roles=UserRole,
+                         subscriptions=SubscriptionPlan)
 
 
 @app.route("/learning")
