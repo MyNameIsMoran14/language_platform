@@ -12,7 +12,7 @@ class UserRole(Enum):
 
 
 class SubscriptionPlan(Enum):
-    NO_TARIFF='Без тарифа'
+    NO_TARIFF = 'Без тарифа'
     FREE = 'Базовый'
     BASIC = 'Продвинутый'
     PREMIUM = 'Премиум'
@@ -29,6 +29,11 @@ class User(UserMixin, db.Model):
     # Дополнительные поля для учителей
     teacher_qualification = db.Column(db.String(100), nullable=True)
     teacher_description = db.Column(db.Text, nullable=True)
+
+    # Новые поля для прогресса и статистики
+    progress = db.Column(db.Integer, default=0)  # Прогресс в процентах (0-100)
+    tasks_completed = db.Column(db.Integer, default=0)  # Количество выполненных заданий
+    points = db.Column(db.Integer, default=0)  # Очки/баллы пользователя
 
     def check_password(self, password):
         return self.password == password
