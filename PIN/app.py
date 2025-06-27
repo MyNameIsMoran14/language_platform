@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, request, flash, jsonify
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
-from models import db, User
+from models import db, User, UserRole, SubscriptionPlan
 import requests
 import uuid
 import json
@@ -75,7 +75,11 @@ class GigaChatService:
             self.get_access_token()
 
         prompt = """
-        Создай 30 заданий для изучения китайского языка в строгом JSON-формате.
+        Создай 10 заданий для изучения китайского языка в строгом JSON-формате.
+        Игра: появляется предложение с пропуском вместо одного слова, также дается 4 варианта ответов (4 слова только одно из которых подходит на место пропуска), пользователь должен выбрать правильный вариант
+        Должны быть только предложения с пропуском, исключи вопросы, сделай ответы односложными
+        Тщательно подбирай варианты ответов и хорошо тасуй их, обязательно должен быть 1 правильный ответ
+        Вариантами ответов должны быть СЛОВА! НИКАКИХ ЦИФР и ЧИСЕЛ. Используй только китайский
     Структура каждого задания:
     {
         "sentence": "предложение с пропуском ___",
@@ -108,7 +112,7 @@ class GigaChatService:
                     "messages": [
                         {
                             "role": "system",
-                            "content": "Ты разработчик онлайн образовательной платформы для китайского языка"
+                            "content": "Ты составитель тестов онлайн образовательной платформы для китайского языка"
                         },
                         {"role": "user", "content": prompt}
                     ],
@@ -165,6 +169,8 @@ def register():
         username = request.form.get("username")
         email = request.form.get("email")
         password = request.form.get("password")
+        role = request.form.get("role", UserRole.USER.value)  # По умолчанию обычный пользователь
+        subscription = request.form.get("subscription", SubscriptionPlan.NO_TARIFF.value)  # По умолчанию бесплатный
 
         # Проверяем, существует ли пользователь с таким именем или email
         existing_user = User.query.filter((User.login == username) | (User.email == email)).first()
@@ -173,8 +179,13 @@ def register():
             return redirect(url_for("register"))
 
         # Создаем нового пользователя
-        new_user = User(login=username, email=email, password=password)
-
+        new_user = User(
+            login=username,
+            email=email,
+            password=password,
+            role=role,
+            subscription=subscription
+        )
 
         db.session.add(new_user)
         db.session.commit()
@@ -182,7 +193,10 @@ def register():
         flash("Регистрация прошла успешно! Теперь вы можете войти.", "success")
         return redirect(url_for("home"))
 
-    return render_template("pages/reg_form.html")
+    # Для GET-запроса передаем возможные роли и тарифы в шаблон
+    return render_template("pages/reg_form.html",
+                         roles=UserRole,
+                         subscriptions=SubscriptionPlan)
 
 
 @app.route("/learning")
