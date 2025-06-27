@@ -4,6 +4,13 @@ from enum import Enum
 
 db = SQLAlchemy()
 
+class Lesson(db.Model):
+    __bind_key__ = 'lessons'  # Указываем, что модель относится к lessons.db
+    tablename = 'lessons'
+
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    description = db.Column(db.Text, nullable=False)
 
 class UserRole(Enum):
     USER = 'user'
@@ -16,6 +23,7 @@ class SubscriptionPlan(Enum):
     FREE = 'Базовый'
     BASIC = 'Продвинутый'
     PREMIUM = 'Премиум'
+
 
 
 class User(UserMixin, db.Model):
