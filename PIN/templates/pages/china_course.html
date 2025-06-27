@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>PIN</title>
+
+	<script src="{{ url_for('static',filename='libs/gsap/gsap.min.js')}}" defer></script>
+
+	<script src="{{ url_for('static',filename='libs/swiper/swiper-bundle.min.js')}}" defer></script>
+	<link rel="stylesheet" href="{{ url_for('static',filename='libs/swiper/swiper-bundle.min.css')}}">
+
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/main.css')}}">
+	<script src="{{ url_for('static',filename='js/app.js')}}" defer></script>
+	<script src="{{ url_for('static',filename='js/modal.js')}}" defer></script>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+	
+	<div class="top-line">
+		<div class="container container-top">
+			<div>
+				<div class="logo">
+  					<a href="{{ url_for('home') }}">
+    					<img src="{{ url_for('static', filename='img/logo.png') }}" alt="Alt">
+  					</a>
+				</div>
+			</div>
+			<div>
+				<ul class="main-mnu">
+					<li><a href="{{ url_for('home') }}#about">О нас</a></li>
+					 <li><a href="{{ url_for('learning') }}">Обучение</a></li>
+					<li><a href="#">Команда</a></li>
+					<li><a href="#">Контакты</a></li>
+					
+					{% if current_user.is_authenticated %}
+						<li class="user-dropdown">
+
+							<a href="#" class="cabinet">
+								<img src="{{ url_for('static', filename='img/user.svg') }}" alt="User"  class="user-icon">
+								{{ current_user.login }}
+							</a>
+							<ul class="dropdown-menu">
+								<li><a href="{{ url_for('profile') }}">Личный кабинет</a></li>
+								<li><a href="{{ url_for('logout') }}">Выйти</a></li>
+							</ul>
+						</li>
+					{% else %}
+						<li><a href="#" class="cabinet" onclick="openModal()">Войти в личный кабинет</a></li>
+					{% endif %}
+					
+				</ul>
+			</div>
+		</div>
+	</div>
+
+    <!-- Модальное окно для добавления статьи -->
+    <div class="article-modal-overlay" id="article-modal">
+        <div class="article-modal-content">
+            <span class="close-article-modal" onclick="closeArticleModal()">&times;</span>
+            <h2>Новый урок</h2>
+            <form id="article-form">
+                <input type="text" name="header" placeholder="Заголовок урока" required>
+                <textarea name="description" placeholder="Содержание урока" required></textarea>
+                <button type="submit">Сохранить</button>
+            </form>
+        </div>
+    </div>
+
+
+    <section class="articles-section">
+        <div class="articles-header">
+            <h2>Уроки китайского</h2>
+            <button class="add-article-btn" onclick="openArticleModal()">+ Добавить урок</button>
+        </div>
+
+        <div class="articles-list">
+            <div class="article-card">
+                <h3>Название урока</h3>
+                <p>Краткое описание...</p>
+            </div>
+            <div class="article-card">
+                <h3>Название урока 2</h3>
+                <p>Краткое описание...</p>
+            </div>
+            <!-- и так далее -->
+        </div>
+    </section>
+
+
+	<footer class="site-footer">
+		<div class="footer-container">
+			<div class="footer-main-content">
+				<div class="footer-links">
+					<div class="links-column">
+						<h3>ЯЗЫКИ</h3>
+						<ul>
+							<li><a href="{{ url_for('chinese_course') }}">Китайский</a></li>
+							<li><a href="#">Японский</a></li>
+							<li><a href="#">Корейский</a></li>
+							<li><a href="#">Тайский</a></li>
+						</ul>
+					</div>
+
+					<div class="links-column">
+						<h3>Карта</h3>
+						<ul>
+							<li><a href="{{ url_for('home') }}#about">О нас</a></li>
+							<li><a href="{{ url_for('learning') }}">Обучение</a></li>
+							<li><a href="/inteam">Команда</a></li>
+							<li><a href="/contacts">Контакты</a></li>
+						</ul>
+					</div>
+
+					<div class="links-column">
+						<h3>Контакты</h3>
+						<ul class="contact-list">
+							<li>
+								<img src="{{ url_for('static', filename='img/phone-call-svgrepo-com.svg') }}" alt="Phone" class="contact-icon">
+								<span>+7 (9**) ***-**-**</span>
+							</li>
+							<li>
+								<a href="https://t.me/pinpincod" target="_blank" class="telegram-link">
+									<img src="{{ url_for('static', filename='img/telegram-svgrepo-com.svg') }}" alt="Telegram" class="contact-icon">
+									<span>PINCOD</span>
+								</a>
+							</li>
+							
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="copyright">
+				<p>Copyright © 2025 – 2025 PINCOD. All Rights Reserved.</p>
+			</div>
+		</div>
+	</footer>
+
+
+</body>
+</html>

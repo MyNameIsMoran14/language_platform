@@ -68,7 +68,6 @@
             <div class="stats-bar">
                 <div class="stat">83%<span>Прогресс</span></div>
                 <div class="stat">77%<span>Завершено</span></div>
-                <div class="stat">91<span>Просмотры</span></div>
                 <div class="stat">126<span>Очки</span></div>
             </div>
 
@@ -86,6 +85,55 @@
             </div>
         </div>
     </div>
+
+	<footer class="site-footer">
+		<div class="footer-container">
+			<div class="footer-main-content">
+				<div class="footer-links">
+					<div class="links-column">
+						<h3>ЯЗЫКИ</h3>
+						<ul>
+							<li><a href="{{ url_for('chinese_course') }}">Китайский</a></li>
+							<li><a href="#">Японский</a></li>
+							<li><a href="#">Корейский</a></li>
+							<li><a href="#">Тайский</a></li>
+						</ul>
+					</div>
+
+					<div class="links-column">
+						<h3>Карта</h3>
+						<ul>
+							<li><a href="{{ url_for('home') }}#about">О нас</a></li>
+							<li><a href="{{ url_for('learning') }}">Обучение</a></li>
+							<li><a href="/inteam">Команда</a></li>
+							<li><a href="/contacts">Контакты</a></li>
+						</ul>
+					</div>
+
+					<div class="links-column">
+						<h3>Контакты</h3>
+						<ul class="contact-list">
+							<li>
+								<img src="{{ url_for('static', filename='img/phone-call-svgrepo-com.svg') }}" alt="Phone" class="contact-icon">
+								<span>+7 (9**) ***-**-**</span>
+							</li>
+							<li>
+								<a href="https://t.me/pinpincod" target="_blank" class="telegram-link">
+									<img src="{{ url_for('static', filename='img/telegram-svgrepo-com.svg') }}" alt="Telegram" class="contact-icon">
+									<span>PINCOD</span>
+								</a>
+							</li>
+							
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="copyright">
+				<p>Copyright © 2025 – 2025 PINCOD. All Rights Reserved.</p>
+			</div>
+		</div>
+	</footer>
 
 
 

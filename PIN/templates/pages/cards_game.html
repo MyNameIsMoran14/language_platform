@@ -91,7 +91,7 @@
   		<div class="spinner"></div>
   		<p>Загружаем...</p>
 	</div>
-	
+
     <section class="grammar-game">
         <p class="sentence"></p>
 
@@ -108,38 +108,48 @@
 	<footer class="site-footer">
 		<div class="footer-container">
 			<div class="footer-main-content">
-			<div class="footer-links">
-				<div class="links-column">
-				<h3>Карта</h3>
-				<ul>
-					<li><a href="#about">О нас</a></li>
-					<li><a href="/learning">Обучение</a></li>
-					<li><a href="/inteam">Команда</a></li>
-					<li><a href="/contacts">Контакты</a></li>
-				</ul>
-				</div>
-				
-				
-				<div class="links-column">
-				<h3>Контакты</h3>
-				<ul>
-					<li><a href="https://t.me/OhhhhReally" target="_blank">@OhhhhReally</a></li>
-					<li><a href="https://t.me/golopat" target="_blank">@golopat</a></li>
-					<li><a href="https://t.me/pinpincod" target="_blank">🔍 pincod</a></li>
-				</ul>
+				<div class="footer-links">
+					<div class="links-column">
+						<h3>ЯЗЫКИ</h3>
+						<ul>
+							<li><a href="{{ url_for('chinese_course') }}">Китайский</a></li>
+							<li><a href="#">Японский</a></li>
+							<li><a href="#">Корейский</a></li>
+							<li><a href="#">Тайский</a></li>
+						</ul>
+					</div>
+
+					<div class="links-column">
+						<h3>Карта</h3>
+						<ul>
+							<li><a href="{{ url_for('home') }}#about">О нас</a></li>
+							<li><a href="{{ url_for('learning') }}">Обучение</a></li>
+							<li><a href="/inteam">Команда</a></li>
+							<li><a href="/contacts">Контакты</a></li>
+						</ul>
+					</div>
+
+					<div class="links-column">
+						<h3>Контакты</h3>
+						<ul class="contact-list">
+							<li>
+								<img src="{{ url_for('static', filename='img/phone-call-svgrepo-com.svg') }}" alt="Phone" class="contact-icon">
+								<span>+7 (9**) ***-**-**</span>
+							</li>
+							<li>
+								<a href="https://t.me/pinpincod" target="_blank" class="telegram-link">
+									<img src="{{ url_for('static', filename='img/telegram-svgrepo-com.svg') }}" alt="Telegram" class="contact-icon">
+									<span>PINCOD</span>
+								</a>
+							</li>
+							
+						</ul>
+					</div>
 				</div>
 			</div>
-			
-			<div class="community-block">
-				<div class="community-content">
-				<h3>Вступай в комьюнити 💬</h3>
-				<p>Вся важная информация и ещё много всего!</p>
-				</div>
-			</div>
-			</div>
-			
+
 			<div class="copyright">
-			<p>Copyright © 2025 – 2025 PINCOD. All Rights Reserved.</p>
+				<p>Copyright © 2025 – 2025 PINCOD. All Rights Reserved.</p>
 			</div>
 		</div>
 	</footer>
