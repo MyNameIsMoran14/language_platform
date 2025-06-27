@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, request, flash, jsonify
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
-from models import db, User, UserRole, SubscriptionPlan
+from models import db, User, UserRole, SubscriptionPlan, Lesson
 import requests
 import uuid
 import json
@@ -26,8 +26,13 @@ app.instance_path = os.path.join(os.getcwd(), 'instance')
 os.makedirs(app.instance_path, exist_ok=True)
 # Полный путь к базе данных
 app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{os.path.join(app.instance_path, "database.db")}'
+app.config['SQLALCHEMY_BINDS'] = {
+    'lessons': f'sqlite:///{os.path.join(app.instance_path, "lessons.db")}'  # БД для уроков
+}
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 db.init_app(app)
+
 login_manager = LoginManager(app)
 login_manager.login_view = 'home'  # Перенаправление на главную, если не авторизован
 
@@ -70,7 +75,7 @@ class GigaChatService:
             raise Exception(f"Ошибка аутентификации: {str(e)}")
 
     def generate_quest(self):
-       
+
         if not self.access_token:
             self.get_access_token()
 
@@ -151,7 +156,7 @@ def login():
 
     user = User.query.filter_by(login=username).first()
 
-# Проверяем пользователя и пароль
+    # Проверяем пользователя и пароль
     if user and user.check_password(password):
         login_user(user)  # Авторизуем пользователя
         flash("Вы успешно вошли!", "success")
@@ -195,8 +200,8 @@ def register():
 
     # Для GET-запроса передаем возможные роли и тарифы в шаблон
     return render_template("pages/reg_form.html",
-                         roles=UserRole,
-                         subscriptions=SubscriptionPlan)
+                           roles=UserRole,
+                           subscriptions=SubscriptionPlan)
 
 
 @app.route("/learning")
@@ -218,9 +223,33 @@ def contacts():
 def test():
     return render_template('pages/cards_game.html')
 
+
 @app.route('/profile')
 def profile():
     return render_template('pages/profile.html')
+
+
+@app.route('/chinese_course')
+def chinese_course():
+    return render_template('pages/china_course.html')
+
+
+@app.route('/chinese_course_lessons', methods=["POST"])
+def chinese_course_lessons():
+    data = request.get_json()
+
+    lesson_header = data.get("header")
+    lesson_description = data.get("description")
+
+    new_lesson = Lesson(title=lesson_header, description=lesson_description)
+    db.session.add(new_lesson)
+    db.session.commit()
+
+    lessons = Lesson.query.all()
+    lessons_list = [{"id": l.id, "title": l.title, "description": l.description} for l in lessons]
+
+    return jsonify(lessons_list)
+
 
 @app.route("/logout")
 @login_required
