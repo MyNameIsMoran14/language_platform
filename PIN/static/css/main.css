@@ -758,14 +758,15 @@ html {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin-bottom: 30px;
+  gap: 20px;
 }
 
 .footer-links {
   display: flex;
-  flex: 1;
-  min-width: 60%;
+  flex: 2;
+  gap: 40px;
   flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 .links-column {
@@ -775,18 +776,21 @@ html {
 }
 
 .links-column h3 {
-  font-size: 18px;
+  font-size: 24px;
   margin-bottom: 15px;
   color: #ffffff;
+  text-align: center;
 }
 
 .links-column ul {
   list-style: none;
   padding: 0;
+  text-align: center;
 }
 
 .links-column ul li {
   margin-bottom: 10px;
+  font-size: 18px;
 }
 
 .links-column ul li a {
@@ -803,6 +807,7 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  
 }
 
 .community-content h3 {
@@ -841,6 +846,29 @@ html {
   color: #888888;
   font-size: 14px;
   margin-top: 20px;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+.contact-list li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #ccc;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.contact-icon {
+  width: 20px;
+  height: 20px;
+
+
 }
 
 
@@ -1042,7 +1070,7 @@ html {
 }
 
 .project-card {
-    background: rgba(255, 255, 255, 0.05);
+    background-image: url("../img/bg-lk.jpg");
     border-radius: 15px;
     padding: 25px;
     flex: 1 1 calc(50% - 20px);
@@ -1083,4 +1111,148 @@ html {
 .dashboard-nav,
 .new-project-btn {
   display: none !important;
+}
+
+/*китайский курс*/
+
+.articles-section {
+  margin-top: 120px;  /* Больше воздуха сверху */
+  padding: 80px 30px 100px;
+  background-color: #0f0f0f;
+  color: white;
+}
+
+.articles-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.articles-header h2 {
+  font-size: 28px;
+  color: #fff;
+}
+
+.add-article-btn {
+  background-color: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  padding: 10px 25px;
+  border-radius: 40px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: auto;
+}
+
+.add-article-btn:hover {
+  background-color: #630017;
+  transform: scale(1.03);
+}
+
+.articles-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: flex-start;
+}
+
+.article-card {
+  background: rgba(26, 26, 26, 0.95);
+  border-radius: 12px;
+  padding: 25px;
+  flex: 1 1 calc(33.333% - 30px);
+  min-width: 260px;
+  box-shadow: 0 0 10px rgba(255,255,255,0.05);
+}
+
+.article-card h3 {
+  margin-bottom: 12px;
+  font-size: 18px;
+  color: #BC002D;
+}
+
+/* МОДАЛКА */
+.article-modal-overlay {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(3px);
+  justify-content: center;
+  align-items: center;
+}
+
+.article-modal-content {
+  background: #1a1a1a;
+  color: white;
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 0 20px rgba(255,255,255,0.1);
+}
+
+.article-modal-content h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.article-modal-content input,
+.article-modal-content textarea {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #333;
+  color: #fff;
+}
+
+.article-modal-content textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.article-modal-content input:focus,
+.article-modal-content textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #630017;
+}
+
+.article-modal-content button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 40px;
+  background-color: transparent;
+  border: 2px solid #fff;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.article-modal-content button:hover {
+  background-color: #630017;
+  transform: scale(1.01);
+}
+
+.close-article-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.close-article-modal:hover {
+  color: #fff;
 }

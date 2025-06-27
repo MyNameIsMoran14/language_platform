@@ -50,4 +50,17 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 });
 
+function openArticleModal() {
+  document.getElementById('article-modal').style.display = 'flex';
+}
 
+function closeArticleModal() {
+  document.getElementById('article-modal').style.display = 'none';
+}
+
+window.addEventListener('click', function (e) {
+  const modal = document.getElementById('article-modal');
+  if (e.target === modal) {
+    closeArticleModal();
+  }
+});

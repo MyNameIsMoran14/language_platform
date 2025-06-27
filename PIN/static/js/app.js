@@ -73,6 +73,17 @@ function scrollToAbout() {
 	});
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+	const hash = window.location.hash;
+	if (hash) {
+		const target = document.querySelector(hash);
+		if (target) {
+			// плавная прокрутка
+			target.scrollIntoView({ behavior: "smooth" });
+		}
+	}
+});
+
 /*знаешь что такое безумие? при каждом заходе на секцию - анимка снова (каюсь,вернула до одного воспроизведения)*/
 const image = document.querySelector('.about-image img');
 let animationPlayed = false;
