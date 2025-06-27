@@ -71,23 +71,29 @@
         </div>
     </div>
 
+    <div class="course-banner">
+	    <img src="{{ url_for('static', filename='img/chinese-banner.jpg') }}" alt="Курс по китайскому" />
+    </div>
+
 
     <section class="articles-section">
-        <div class="articles-header">
-            <h2>Уроки китайского</h2>
-            <button class="add-article-btn" onclick="openArticleModal()">+ Добавить урок</button>
-        </div>
+        <div class="container-china">
+            <div class="articles-header">
+                <h2>Уроки китайского</h2>
+                <button class="add-article-btn" onclick="openArticleModal()">+ Добавить урок</button>
+            </div>
 
-        <div class="articles-list">
-            <div class="article-card">
-                <h3>Название урока</h3>
-                <p>Краткое описание...</p>
+            <div class="articles-list">
+                <div class="article-card">
+                    <h3>Название урока</h3>
+                    <p>Краткое описание...</p>
+                </div>
+                <div class="article-card">
+                    <h3>Название урока 2</h3>
+                    <p>Краткое описание...</p>
+                </div>
+                <!-- и так далее -->
             </div>
-            <div class="article-card">
-                <h3>Название урока 2</h3>
-                <p>Краткое описание...</p>
-            </div>
-            <!-- и так далее -->
         </div>
     </section>
 

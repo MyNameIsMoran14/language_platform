@@ -222,6 +222,7 @@ def test():
 def profile():
     return render_template('pages/profile.html')
 
+
 @app.route("/logout")
 @login_required
 def logout():
