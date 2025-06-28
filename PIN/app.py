@@ -250,6 +250,12 @@ def chinese_course_lessons():
 
     return jsonify(lessons_list)
 
+@app.route('/get_chinese_lessons', methods=["GET"])
+def get_chinese_lessons():
+    lessons = Lesson.query.all()
+    lessons_list = [{"id": l.id, "title": l.title, "description": l.description} for l in lessons]
+    return jsonify(lessons_list)
+
 
 @app.route("/logout")
 @login_required

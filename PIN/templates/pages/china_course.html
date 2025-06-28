@@ -12,6 +12,7 @@
 
 	<link rel="stylesheet" href="{{ url_for('static',filename='css/main.css')}}">
 	<script src="{{ url_for('static',filename='js/app.js')}}" defer></script>
+	<script src="{{ url_for('static',filename='js/tests.js')}}" defer></script>
 	<script src="{{ url_for('static',filename='js/modal.js')}}" defer></script>
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -83,16 +84,13 @@
                 <button class="add-article-btn" onclick="openArticleModal()">+ Добавить урок</button>
             </div>
 
-            <div class="articles-list">
-                <div class="article-card">
-                    <h3>Название урока</h3>
-                    <p>Краткое описание...</p>
-                </div>
-                <div class="article-card">
-                    <h3>Название урока 2</h3>
-                    <p>Краткое описание...</p>
-                </div>
-                <!-- и так далее -->
+            <div class="articles-list" id="lessons-container">
+                {% for lesson in lessons %}
+                    <div class="article-card">
+                        <h3>{{ lesson.title }}</h3>
+                        <p>{{ lesson.description }}</p>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </section>

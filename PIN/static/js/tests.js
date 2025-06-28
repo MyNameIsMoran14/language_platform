@@ -76,7 +76,55 @@ document.addEventListener("DOMContentLoaded", async function () {
 });
 
 
+/*уроки*/
 
+document.addEventListener("DOMContentLoaded", function () {
+	// Загрузка уроков при открытии страницы
+	fetch('/get_chinese_lessons')
+		.then(response => response.json())
+		.then(data => {
+			renderLessons(data);
+		});
+
+	// Отправка формы
+	document.getElementById("article-form").addEventListener("submit", function (e) {
+		e.preventDefault();
+
+		const header = this.querySelector('input[name="header"]').value;
+		const description = this.querySelector('textarea[name="description"]').value;
+
+		fetch('/chinese_course_lessons', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ header, description })
+		})
+		.then(res => res.json())
+		.then(data => {
+			renderLessons(data); // Обновить список
+			this.reset(); // Очистить форму
+			closeArticleModal();
+		});
+	});
+});
+
+function renderLessons(lessons) {
+	const container = document.getElementById("lessons-container");
+	container.innerHTML = '';
+
+	lessons.forEach(lesson => {
+		const card = document.createElement("div");
+		card.classList.add("article-card");
+
+		card.innerHTML = `
+			<h3>${lesson.title}</h3>
+			<p>${lesson.description}</p>
+		`;
+
+		container.appendChild(card);
+	});
+}
 
 /*НЕ НУЖНО*/
 
