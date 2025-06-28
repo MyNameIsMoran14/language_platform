@@ -976,10 +976,14 @@ html {
 }
 
 .tariff-desc {
-	font-size: 15px;
-	color: #ccc;
-	margin-bottom: 20px;
-	min-height: 60px;
+  font-size: 15px;
+  color: #ccc;
+  margin-bottom: 20px;
+  min-height: 60px;
+  line-height: 1.6;        /* Добавим расстояние между строками */
+  padding-left: 1em;       /* Имитируем табуляцию слева */
+  text-align: left;        /* На всякий случай — выравнивание */
+  white-space: pre-line;   /* Учитывает переносы строк через <br> */
 }
 .tariff-divider {
   width: 80%;
