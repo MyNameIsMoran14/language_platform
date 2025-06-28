@@ -259,7 +259,7 @@ def get_chinese_lessons():
 @app.route('/get_user_role' , methods=["GET"])
 def get_user_role():
     if current_user.is_authentificated:
-        return jsonify(current_user.role)
+        return jsonify({"role" : current_user.role})
 
 @app.route("/logout")
 @login_required
