@@ -241,14 +241,14 @@ def chinese_course_lessons():
     lesson_header = data.get("header")
     lesson_description = data.get("description")
 
-    new_lesson = Lesson(title=lesson_header, description=lesson_description)
+    new_lesson = Lesson(title=lesson_header, description=lesson_description, id=id+1)
     db.session.add(new_lesson)
     db.session.commit()
 
     lessons = Lesson.query.all()
     lessons_list = [{"id": l.id, "title": l.title, "description": l.description} for l in lessons]
-
     return jsonify(lessons_list)
+
 
 @app.route('/get_chinese_lessons', methods=["GET"])
 def get_chinese_lessons():
