@@ -256,6 +256,10 @@ def get_chinese_lessons():
     lessons_list = [{"id": l.id, "title": l.title, "description": l.description} for l in lessons]
     return jsonify(lessons_list)
 
+@app.route('/get_user_role' , methods=["GET"])
+def get_user_role():
+    if current_user.is_authentificated:
+        return jsonify(current_user.role)
 
 @app.route("/logout")
 @login_required
