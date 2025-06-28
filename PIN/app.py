@@ -261,6 +261,12 @@ def get_user_role():
     if current_user.is_authenticated:
         return jsonify({"role" : current_user.role})
 
+@app.route('/set_tariff', methods=["GET"])
+def set_tariff():
+    data = request.get_json()
+    current_user.subscription = data.tariff
+    return jsonify({'tariff' : current_user.tariff})
+
 @app.route("/logout")
 @login_required
 def logout():
