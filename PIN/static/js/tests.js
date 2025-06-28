@@ -126,6 +126,25 @@ function renderLessons(lessons) {
 	});
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+	// Скрываем кнопку по умолчанию
+	const addBtn = document.getElementById("add-lesson-btn");
+	if (addBtn) addBtn.style.display = "none";
+
+	// Проверка роли пользователя
+	fetch('/get_user_role')
+		.then(res => res.json())
+		.then(data => {
+			const role = data?.role;
+			if (role === "teacher" || role === "admin") {
+				if (addBtn) addBtn.style.display = "inline-block";
+			}
+		})
+		.catch(err => {
+			console.warn("Не удалось получить роль пользователя", err);
+		});
+});
+
 /*НЕ НУЖНО*/
 
 // let canvas = document.getElementById('draw-area');

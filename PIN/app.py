@@ -260,6 +260,7 @@ def get_chinese_lessons():
 def get_user_role():
     if current_user.is_authenticated:
         return jsonify({"role" : current_user.role})
+    return jsonify({"role":None})
 
 @app.route("/logout")
 @login_required
