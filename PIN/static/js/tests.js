@@ -159,8 +159,9 @@ function renderLessons(lessons) {
 	lessons.forEach(lesson => {
 		const card = document.createElement("div");
 		card.classList.add("article-card");
-
+		card.id.add(lesson.id);
 		card.innerHTML = `
+			<button class="delete-lesson-btn" onclick="deleteLesson(e)">Удалить</button>
 			<h3>${lesson.title}</h3>
 			<p>${lesson.description}</p>
 		`;
@@ -189,6 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			console.warn("Не удалось получить роль пользователя", err);
 		});
 });
+
 
 /*НЕ НУЖНО*/
 

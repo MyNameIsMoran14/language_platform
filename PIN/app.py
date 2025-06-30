@@ -241,7 +241,7 @@ def chinese_course_lessons():
     lesson_header = data.get("header")
     lesson_description = data.get("description")
 
-    new_lesson = Lesson(title=lesson_header, description=lesson_description, id=id+1)
+    new_lesson = Lesson(title=lesson_header, description=lesson_description)
     db.session.add(new_lesson)
     db.session.commit()
 
