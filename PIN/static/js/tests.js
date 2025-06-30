@@ -1,5 +1,6 @@
 /*тест карточки*/ 
-
+let correct_answer=''
+let correctCount = 0;
 document.addEventListener("DOMContentLoaded", async function () {
   const sentenceEl = document.querySelector(".sentence");
   const cardsContainer = document.querySelector(".cards");
@@ -20,7 +21,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     const data = await response.json();
     exercises = data.exercises;
-
+    correct_answer=data.exercises.correct_answer
     loadingEl.style.display = "none";
     showExercise();
 
@@ -54,6 +55,9 @@ document.addEventListener("DOMContentLoaded", async function () {
           feedback.textContent = "Верно!";
           feedback.style.color = "#00ff88";
 
+          correctCount++;
+          updateScore();
+
           setTimeout(() => {
             currentIndex++;
             showExercise();
@@ -74,6 +78,45 @@ document.addEventListener("DOMContentLoaded", async function () {
     );
   }
 });
+
+
+let correctAnswer = correct_answer; // ← сюда будет подставляться правильный ответ из API или массива
+
+function updateScore() {
+	const counter = document.getElementById('score-counter');
+
+	counter.textContent = `Правильных ответов: ${correctCount}`;
+}
+
+function setupCardHandlers() {
+	document.querySelectorAll('.card').forEach(card => {
+		card.addEventListener('click', () => {
+			const selected = card.textContent.trim();
+
+			if (selected === correctAnswer) {
+				correctCount++;
+				updateScore();
+				document.querySelector(".feedback").textContent = "✅ Верно!";
+			} else {
+				document.querySelector(".feedback").textContent = "❌ Неверно";
+			}
+
+			// Здесь можешь загрузить следующее задание
+		});
+	});
+}
+
+// Пример: при загрузке вопроса
+function loadQuestion(data) {
+	document.querySelector('.sentence').textContent = data.sentence;
+	const cards = document.querySelectorAll('.card');
+
+	data.options.forEach((option, i) => {
+		cards[i].textContent = option;
+	});
+
+	correctAnswer = data.correct_answer;
+}
 
 
 /*уроки*/
@@ -125,6 +168,8 @@ function renderLessons(lessons) {
 		container.appendChild(card);
 	});
 }
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
 	// Скрываем кнопку по умолчанию
