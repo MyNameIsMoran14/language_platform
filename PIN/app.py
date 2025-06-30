@@ -268,6 +268,20 @@ def set_tariff():
     current_user.subscription = data.tariff
     return jsonify({'tariff' : current_user.tariff})
 
+@app.route('/delete_lesson', methods=["GET", "POST"])
+def delete_lesson():
+    data = request.get_json()
+    lesson = Lesson.query.get(data["id"])
+    if 'id' in data:
+        lesson.title = ""
+        lesson.description = ""
+    db.session.commit()
+
+    lessons = Lesson.query.all()
+    lessons_list = [{"id": l.id, "title": l.title, "description": l.description} for l in lessons]
+
+    return jsonify(lessons_list)
+
 @app.route("/logout")
 @login_required
 def logout():
